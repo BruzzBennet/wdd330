@@ -21,11 +21,11 @@ function getAnimal(data) {
         fakemon.innerHTML =`
         <div class="res1">
         <img src="${pokemon.imageSrc}" loading="lazy"/>
-        <h2>${pokemon.binomialName}</h2>
-        <a href="${pokemon.wikiLink}" target="_blank">Learn more about it</a>
+        <h2>${pokemon.commonName}</h2>
+        <a href="${pokemon.wikiLink}" target="_blank">Click here to learn more</a>
         </div> 
         `;
-    document.querySelector(".animal").appendChild(fakemon);
+    document.querySelector("#animalres").appendChild(fakemon);
     }
   )
 }
@@ -40,7 +40,7 @@ function getColor(data) {
             <p> RGB: ${results.rgb}</p>
             </div>
         `;
-    document.querySelector(".colors").appendChild(fakemon);
+    document.querySelector("#colorres").appendChild(fakemon);
 }
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -67,7 +67,7 @@ function getType(data){
             </div>
         `;
     }       
-    document.querySelector(".Type").appendChild(fakemon);
+    document.querySelector("#typeres").appendChild(fakemon);
 }
 function getEvo(data){
     results=data;
@@ -78,22 +78,40 @@ function getEvo(data){
         <h2>${results.evo[random]}</h2>
         </div>
     `;
-    document.querySelector(".Evolution").appendChild(fakemon);
+    document.querySelector("#evores").appendChild(fakemon);
 }
+
+function pinned(pin,place,url,type,color=false){
+    if (color==false){
+        if(!document.querySelector(`#${pin}`).classList.contains("clicked")){
+            document.querySelector(`#${place}`).innerHTML=``;
+            getData(url,type);
+        }
+    }
+    else{
+        if(!document.querySelector(`#${pin}`).classList.contains("clicked")){
+            document.querySelector(`#${place}`).innerHTML=``;
+            getData(url,type);
+            getData(url,type);
+            getData(url,type);
+        }
+    }
+    
+}
+
 const button = document.querySelector(".create");
 button.addEventListener("click",()=>{
+    document.querySelector(".results").style.display="grid";
+    document.querySelector(".results").classList.add('fade-in');
     document.querySelectorAll(".res").forEach(item =>{
         item.style.display="block"; 
         item.classList.add('fade-in')
     });
-    document.querySelector(".animal").innerHTML="<h1>Animal</h1>";
-    getData(url,getAnimal);
-    document.querySelector(".colors").innerHTML="<h1>Colors</h1>";
-    getData(url1,getColor);
-    getData(url1,getColor);
-    getData(url1,getColor);
-    document.querySelector(".Type").innerHTML="<h1>Type</h1>";
-    getData(url2,getType);
-    document.querySelector(".Evolution").innerHTML="<h1>Evolutions</h1>";
-    getData(url3,getEvo);
+    // document.querySelectorAll(".res1").forEach(item =>{
+    //     item.innerHTML=``;
+    // });
+    pinned("pin1","animalres",url,getAnimal);
+    pinned("pin2","colorres",url1,getColor,true);
+    pinned("pin3","typeres",url2,getType);
+    pinned("pin4","evores",url3,getEvo);
 })

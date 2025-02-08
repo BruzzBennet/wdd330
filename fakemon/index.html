@@ -6,6 +6,7 @@
     <title>Fakemon Idea Generator</title>
     <script src="scripts/hambutton.js" type="module"></script>
     <script src="scripts/results.js" type="module"></script>
+    <script src="scripts/pin.js" type="module"></script>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/styles-small.css">
 </head>
@@ -25,11 +26,27 @@
     <main>
         <button class="create">Create a Fakemon!</button>
         <div class="results">
-            <div class="animal res"></div>
-            <div class="colors res"></div>
+            <div class="animal">
+                <h1>Animal</h1>
+                <button id="pin1" class="pin"><img src="images/pin.png" width="35px"></button>
+                <div id="animalres"></div>
+            </div>
+            <div class="colors">
+                <h1>Colors</h1>
+                <button id="pin2" class="pin"><img src="images/pin.png" width="35px"></button>
+                <div id="colorres"></div>
+            </div>
             <div class="typeevo">
-                <div class="Type res"></div>
-                <div class="Evolution res"></div>
+                <div class="Type">
+                    <h1>Type</h1>
+                    <button id="pin3" class="pin"><img src="images/pin.png" width="35px"></button>
+                    <div id="typeres"></div>
+                </div>
+                <div class="Evolution">
+                    <h1>Evolutions</h1>
+                    <button id="pin4" class="pin"><img src="images/pin.png" width="35px"></button>
+                    <div id="evores"></div>
+                </div>
             </div>        
         </div>
     </main>
