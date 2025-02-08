@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fakemon Idea Generator</title>
+    <script src="scripts/hambutton.js" type="module"></script>
     <script src="scripts/results.js" type="module"></script>
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/styles-small.css">
 </head>
 <body>
     <header>
+        <button id="menu"></button>
         <nav>
             <ul>
                 <li><a href="index.html">Create a Fakemon</a></li> 
@@ -17,9 +20,10 @@
                 <li><a href="saved.html">Saved Fakemon Ideas</a></li>
              </ul> 
         </nav>
+        
     </header>
     <main>
-        <button>Create a Fakemon!</button>
+        <button class="create">Create a Fakemon!</button>
         <div class="results">
             <div class="animal res"></div>
             <div class="colors res"></div>

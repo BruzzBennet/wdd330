@@ -27,7 +27,11 @@ body {
     margin: 0 auto;
     padding: 1rem;
     display:none;
-    height:425px;
+    min-height:425px;
+}
+
+.typeevo .res{
+    min-height: 150px;
 }
 
 .fade-in,.res1{
@@ -44,6 +48,9 @@ body {
     }
 }
 
+#menu {
+    display: none;
+}
 
 .typeevo{
     display: grid;
@@ -95,7 +102,7 @@ a {
     padding:1rem;
 }
 
-button:hover{
+.create:hover{
     background-color: #fbfbfb;
     color:#2f2f2f; 
     animation-duration: 0.7s;
@@ -139,4 +146,5 @@ button{
 .animal img{
     max-height:200px;
     margin:0;
+    max-width: 90%;
 }

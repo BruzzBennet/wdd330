@@ -1,0 +1,59 @@
+@media only screen and (max-width: 750px){
+    .results,.typeevo{
+        grid-template-columns: 1fr 1fr;
+    }
+    .typeevo{
+        grid-column: 1/3;
+    }
+    .res{
+        margin:0.5rem;
+    }
+    #menu{
+        display: block;
+        margin: 0 auto;
+    }
+
+    #menu::before {
+        content: "☰";
+    }
+    
+    #menu.show::before {
+        content: "X";
+    }
+    
+    #menu {
+        font-size: 1.5rem;
+        border: 0;
+        background: none;
+        color: white;
+    }
+
+    nav a{
+        display: none;
+        margin-bottom: 1rem;
+    }
+
+    .show ul li a {
+        display: block;
+    }
+
+    nav.show{
+        grid-template-rows: 1fr;
+        transition: grid-template-rows 0.5s ease-out;
+    }
+    
+    nav{
+        display:grid;
+        grid-template-rows: 0fr;
+    }
+    nav ul{
+        display:grid;
+        text-align: center;
+        overflow: hidden;
+        padding: 0;
+        justify-content:stretch;
+    }
+    nav ul li{
+        width: 100%;
+    }
+}

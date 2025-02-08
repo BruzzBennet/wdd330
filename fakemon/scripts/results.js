@@ -80,7 +80,7 @@ function getEvo(data){
     `;
     document.querySelector(".Evolution").appendChild(fakemon);
 }
-const button = document.querySelector("button");
+const button = document.querySelector(".create");
 button.addEventListener("click",()=>{
     document.querySelectorAll(".res").forEach(item =>{
         item.style.display="block"; 
