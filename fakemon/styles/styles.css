@@ -19,22 +19,25 @@ body {
     background-color: #fbfbfb;
 } */
 
-.animal,.colors,.Type,.Evolution{
+.animal,.colors,.Type,.Evolution,.team{
     background-color: white;
     border-radius: 1rem;
     box-shadow: 0px 0px 0.5rem 0.5rem rgb(0 0 0 / 0.35);
-    width: 75%;
     margin: 1rem auto;
     padding: 1rem;
-    min-height:425px;
     position: relative;
+}
+
+.animal,.colors,.Type,.Evolution{
+    min-height:425px;
+    width: 75%;
 }
 
 .typeevo > div{
     min-height: 150px;
 }
 
-.fade-in,.res1{
+.fade-in,.res1,.team{
     animation: fade-in 0.5s ease-in forwards;
 }
 
@@ -95,14 +98,14 @@ a {
     font-size: 1.5rem;
 }
 
-.res1 a{
+.res1 a, .team a{
     text-decoration: none;
     color: #2f2f2f;
     font-size: 1.5rem;
     padding:1rem;
 }
 
-ul li:hover, .res1 a:hover{
+ul li:hover, .res1 a:hover, .team a:hover{
     background-color:#2f2f2f; 
     color: white;
  }
@@ -154,8 +157,70 @@ ul li:hover, .res1 a:hover{
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.animal img{
+.animal img, .animalres img{
     max-height:200px;
     margin:0;
     max-width: 90%;
+}
+
+.team{
+    background-color: white;
+    margin:1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.05fr 0.05fr 0.05fr;
+}
+
+.animalres{
+    grid-column: 1/2;
+    grid-row: 1/4;
+    align-self: center;
+}
+
+.rowone{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.rowone h2{
+    grid-row: 1/2;
+    grid-column: 1/4;
+}
+
+.colorone{
+    grid-row: 2/3;
+    grid-column: 1/2;
+}
+
+.colortwo{
+    grid-row: 2/3;
+    grid-column: 2/3;
+}
+
+.colorthree{
+    grid-row: 2/3;
+    grid-column: 3/4;
+}
+
+.rowtwo{
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+.rowthree{
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+
+.group{
+    grid-template-columns: 1fr 1fr;
+}
+
+.loading{
+    color:white;
+    font-size: 2rem;
+    font-weight: 700;
 }

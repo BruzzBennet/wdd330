@@ -56,4 +56,7 @@
     nav ul li{
         width: 100%;
     }
+    .group{
+        grid-template-columns: 1fr;
+    }
 }
