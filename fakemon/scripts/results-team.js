@@ -80,6 +80,7 @@ function pinned(){
 }
 
 async function createTeam(){
+    loadnum=0;
     // document.querySelector(".group").innerHTML=``;
     document.querySelector(".create").style.visibility="hidden";
     for (let i = 0; i < (6-pokeinscreen); i++) {
@@ -87,14 +88,18 @@ async function createTeam(){
             document.querySelector(".loading").innerHTML="Loading.";
             loadnum+=1;
         }
-        if (loadnum==1){
-            document.querySelector(".loading").innerHTML="Loading..";
-            loadnum+=1;
-        }
-        if (loadnum==2){
-            document.querySelector(".loading").innerHTML="Loading...";
-            loadnum=0;
-        }    
+        else{
+            if (loadnum==1){
+                document.querySelector(".loading").innerHTML="Loading..";
+                loadnum+=1;
+            }
+            else{
+                if (loadnum==2){
+                    document.querySelector(".loading").innerHTML="Loading...";
+                    loadnum=0;
+                }  
+            }
+        }          
         await getData(url,getAnimal);
         colorlist=[];
         await getData(url1,getColor);
