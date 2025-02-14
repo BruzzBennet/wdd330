@@ -64,7 +64,7 @@ function pinned(){
             pokeinscreen+=1;
         }
     });
-    for (let i = 0; i < (pinlimit+6); i++) { 
+    for (let i = 0; i < (pinlimit+7); i++) { 
         // console.log(pinlimit);
         let item=document.querySelector(`#pin${i}`)
         try{
@@ -83,15 +83,15 @@ async function createTeam(){
     // document.querySelector(".group").innerHTML=``;
     document.querySelector(".create").style.visibility="hidden";
     for (let i = 0; i < (6-pokeinscreen); i++) {
-        if (i==0){
+        if (loadnum==0){
             document.querySelector(".loading").innerHTML="Loading.";
             loadnum+=1;
         }
-        if (i==1){
+        if (loadnum==1){
             document.querySelector(".loading").innerHTML="Loading..";
             loadnum+=1;
         }
-        if (i==2){
+        if (loadnum==2){
             document.querySelector(".loading").innerHTML="Loading...";
             loadnum=0;
         }    
