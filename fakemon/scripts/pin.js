@@ -4,7 +4,7 @@ const pin3 = document.querySelector('#pin3');
 const pin4 = document.querySelector('#pin4');
 
 function pin(pinner){
-    pinner.addEventListener('click', () => {
+    pinner.addEventList('click', () => {
         pinner.classList.toggle('clicked');
     });
 }

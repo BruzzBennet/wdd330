@@ -42,7 +42,7 @@ function getType(data){
         type=results.types[random1];
     else
         type=`${results.types[random1]} - ${results.types[random2]}`;
-    console.log(type);
+    // console.log(type);
 }
 
 function getEvo(data){
@@ -50,29 +50,68 @@ function getEvo(data){
     let result;
     let random = getRandomInt(4);
     evo=results.evo[random]
-    console.log(evo);
+    // console.log(evo);
+}
+
+let pinlimit=0;
+let loadnum=0;
+let pinnum=0;
+let pokeinscreen=0;
+
+function pinned(){ 
+    document.querySelectorAll(".pin").forEach(pin=>{
+        if (pin.classList.contains("clicked")){
+            pokeinscreen+=1;
+        }
+    });
+    for (let i = 0; i < (pinlimit+6); i++) { 
+        // console.log(pinlimit);
+        let item=document.querySelector(`#pin${i}`)
+        try{
+            if(!item.classList.contains("clicked")){
+                // item.remove();
+                item.closest("div.team").remove();           
+            }
+        }  
+        catch{
+
+        }             
+    }
 }
 
 async function createTeam(){
-    document.querySelector(".group").innerHTML=``;
+    // document.querySelector(".group").innerHTML=``;
     document.querySelector(".create").style.visibility="hidden";
-    for (let i = 0; i < 6; i++) {
-        if (i==0 || i==3)
+    for (let i = 0; i < (6-pokeinscreen); i++) {
+        if (i==0){
             document.querySelector(".loading").innerHTML="Loading.";
-        if (i==1 || i==4)
+            loadnum+=1;
+        }
+        if (i==1){
             document.querySelector(".loading").innerHTML="Loading..";
-        if (i==2 || i==5)
+            loadnum+=1;
+        }
+        if (i==2){
             document.querySelector(".loading").innerHTML="Loading...";
+            loadnum=0;
+        }    
         await getData(url,getAnimal);
         colorlist=[];
         await getData(url1,getColor);
         await getData(url1,getColor);
         await getData(url1,getColor);
-        console.log(colorlist);
+        // console.log(colorlist);
         await getData(url2,getType);
         await getData(url3,getEvo);
         let card = document.createElement("div");
         card.setAttribute("class","team");
+        let pin=document.createElement("button");
+        pin.setAttribute("id",`pin${pinlimit+1+i}`);
+        pin.setAttribute("class",`pin`);
+        pin.innerHTML=`<img src="images/pin.png" width="35px">`
+        pin.addEventListener("click",()=>{
+            pinner(pin,pinlimit+i+1);
+        })
         // console.log(pokemon);
         card.innerHTML=`  
             <div class="animalres">
@@ -95,15 +134,26 @@ async function createTeam(){
                 <h2>${evo}</h2>
             </div>
             `;
+        card.appendChild(pin);
         document.querySelector(".group").appendChild(card);
     }
     document.querySelector(".loading").innerHTML=``;
     document.querySelector(".create").style.visibility="visible";
+    pinnum=1;
+}
+
+function pinner(pinner,find){
+        pinner.classList.toggle('clicked');
+            if (pinlimit<find)
+                pinlimit=find;         
 }
 
 const button = document.querySelector(".create");
 button.addEventListener("click",()=>{
     document.querySelector(".group").style.display="grid";
     document.querySelector(".group").classList.add('fade-in');
+    pokeinscreen=0;
+    if (pinnum!=0)
+        pinned();
     createTeam();
 })
