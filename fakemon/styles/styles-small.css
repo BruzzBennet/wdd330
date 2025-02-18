@@ -7,16 +7,16 @@
         grid-template-rows: 1fr;
     }
     .res1 p{
-        margin: 0.5rem;
+        margin: 0.35rem;
     }
     .results h1, .results h2{
         margin:0.5rem;
     }
     .colors,.animal{
-        min-height: 325px;
+        min-height: 340px;
     }
     .animal img{
-        max-height: 125px;
+        max-height: 135px;
         margin: 0;
     }
     .res{
@@ -26,8 +26,9 @@
         margin-top: 35px;
     }
     .typeevo>div{
-        max-height:125px;
-        min-height: 125px;
+        height: 125px;
+        /* max-height:150px; */
+        min-height: 100px;
     }
     #menu{
         display: block;
