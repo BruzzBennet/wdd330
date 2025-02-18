@@ -117,7 +117,7 @@ const button = document.querySelector(".create");
 button.addEventListener("click",()=>{
     document.querySelector(".save").style.display="inline";
     save.classList.remove('clicked');
-    save.innerHTML="Save this Fakemon"
+    save.innerHTML="Save"
     document.querySelector(".results").style.display="grid";
     document.querySelector(".results").classList.add('fade-in');
     document.querySelectorAll(".res").forEach(item =>{
