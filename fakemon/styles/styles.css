@@ -156,7 +156,8 @@ ul li:hover, .res1 a:hover, .team a:hover{
 .bookmark{
     background-color: #ef5350;
     position: absolute;
-    right: 50px;
+    /* right: 50px; */
+    left:0;
     top: 0;
     height:50px;
     width:50px;
