@@ -56,7 +56,7 @@
     nav ul li{
         width: 100%;
     }
-    .group{
+    .group,.savedfakemon{
         grid-template-columns: 1fr;
     }
 }

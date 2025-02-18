@@ -19,7 +19,7 @@ body {
     background-color: #fbfbfb;
 } */
 
-.animal,.colors,.Type,.Evolution,.team{
+.animal,.colors,.Type,.Evolution,.team, .team1{
     background-color: white;
     border-radius: 1rem;
     box-shadow: 0px 0px 0.5rem 0.5rem rgb(0 0 0 / 0.35);
@@ -37,7 +37,7 @@ body {
     min-height: 150px;
 }
 
-.fade-in,.res1,.team{
+.fade-in,.res1,.team:not(.saveteam){
     animation: fade-in 0.5s ease-in forwards;
 }
 
@@ -115,20 +115,13 @@ ul li:hover, .res1 a:hover, .team a:hover{
      animation-name: grow-shrink;
  }
 
-.create:hover{
-    background-color: #fbfbfb;
-    color:#2f2f2f; 
-    animation-duration: 0.7s;
-    animation-name: grow-shrink;
-}
-
 @keyframes grow-shrink {
     50% {
       transform: scale(115%);
     }
 }
 
-.create{
+.create, .save{
     background-color: #ef5350;
     width:50%;
     border-radius: 1rem;
@@ -137,6 +130,18 @@ ul li:hover, .res1 a:hover, .team a:hover{
     font-size: 1.5rem;
     margin: 1rem;
     padding: 1rem;
+}
+
+.create:hover, .save:hover{
+    background-color: #fbfbfb;
+    color:#2f2f2f; 
+    animation-duration: 0.7s;
+    animation-name: grow-shrink;
+}
+
+.save{ 
+    width:30%;
+    display: none;
 }
 
 .pin{
@@ -148,8 +153,18 @@ ul li:hover, .res1 a:hover, .team a:hover{
     width:50px;
 }
 
-.pin.clicked{
+.bookmark{
+    background-color: #ef5350;
+    position: absolute;
+    right: 50px;
+    top: 0;
+    height:50px;
+    width:50px;
+}
+
+.pin.clicked, .save.clicked,.bookmark.clicked{
     background-color: #2f2f2f;
+    color: white;
 }
 
 .results{
@@ -163,7 +178,7 @@ ul li:hover, .res1 a:hover, .team a:hover{
     max-width: 90%;
 }
 
-.team{
+.team, .team1{
     background-color: white;
     margin:1rem;
     display: grid;
@@ -215,7 +230,11 @@ ul li:hover, .res1 a:hover, .team a:hover{
     grid-row: 3/4;
 }
 
-.group{
+.savedfakemon{
+    display: grid;
+}
+
+.group, .savedfakemon{
     grid-template-columns: 1fr 1fr;
 }
 

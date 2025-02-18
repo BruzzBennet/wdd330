@@ -1,16 +1,22 @@
 const url = "https://extinct-api.herokuapp.com/api/v1/animal/";
 const url1 = "https://x-colors.yurace.pro/api/random";
-const url2 = "data/types.json"
-const url3 = "data/evolution.json"
+const url2 = "data/types.json";
+const url3 = "data/evolution.json";
+
+let animaldata={};
+let colordata=[];
+let fakemondata={"animal":{},"colors":[],"type":"","evo":""};
+let fakemondatalist=[];
+
 let results = null;
-async function getData(url,type) {
+async function getData(url,type,num) {
   const response = await fetch(url);
   //check to see if the fetch was successful
   if (response.ok) {
     // the API will send us JSON...but we have to convert the response before we can use it
     // .json() also returns a promise...so we await it as well.
     const data = await response.json();
-    type(data);
+    type(data,num);
   }
 }
 function getAnimal(data) {
@@ -26,10 +32,12 @@ function getAnimal(data) {
         </div> 
         `;
     document.querySelector("#animalres").appendChild(fakemon);
-    }
-  )
+        animaldata={"imageSrc":pokemon.imageSrc,"commonName":pokemon.commonName,"wikiLink":pokemon.wikiLink};
+    })
+  fakemondata.animal=animaldata;
+//   console.log(JSON.stringify(fakemondata));
 }
-function getColor(data) {
+function getColor(data,num) {
     results = data;
     // console.log("first: ", results);
     let fakemon = document.createElement("div");
@@ -41,6 +49,7 @@ function getColor(data) {
             </div>
         `;
     document.querySelector("#colorres").appendChild(fakemon);
+    colordata[num]=results.rgb;
 }
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -58,6 +67,7 @@ function getType(data){
             <h2>${results.types[random1]}</h2>
             </div>
         `;
+        fakemondata.type=results.types[random1];
     }    
     else
     {
@@ -66,6 +76,7 @@ function getType(data){
             <h2>${results.types[random1]} - ${results.types[random2]}</h2>
             </div>
         `;
+        fakemondata.type=`${results.types[random1]} - ${results.types[random2]}`;
     }       
     document.querySelector("#typeres").appendChild(fakemon);
 }
@@ -79,6 +90,7 @@ function getEvo(data){
         </div>
     `;
     document.querySelector("#evores").appendChild(fakemon);
+    fakemondata.evo=results.evo[random];
 }
 
 function pinned(pin,place,url,type,color=false){
@@ -91,16 +103,21 @@ function pinned(pin,place,url,type,color=false){
     else{
         if(!document.querySelector(`#${pin}`).classList.contains("clicked")){
             document.querySelector(`#${place}`).innerHTML=``;
-            getData(url,type);
-            getData(url,type);
-            getData(url,type);
+            getData(url,type,0);
+            getData(url,type,1);
+            getData(url,type,2);
+            // console.log(colordata);
+            fakemondata.colors=colordata;
         }
     }
     
 }
-
+const save= document.querySelector(".save");
 const button = document.querySelector(".create");
 button.addEventListener("click",()=>{
+    document.querySelector(".save").style.display="inline";
+    save.classList.remove('clicked');
+    save.innerHTML="Save this Fakemon"
     document.querySelector(".results").style.display="grid";
     document.querySelector(".results").classList.add('fade-in');
     document.querySelectorAll(".res").forEach(item =>{
@@ -114,4 +131,18 @@ button.addEventListener("click",()=>{
     pinned("pin2","colorres",url1,getColor,true);
     pinned("pin3","typeres",url2,getType);
     pinned("pin4","evores",url3,getEvo);
+    // console.log(JSON.stringify(fakemondata));
+})
+
+save.addEventListener("click",()=>{
+    if (!save.classList.contains("clicked")){
+    // document.querySelector(".save").style.display="none";
+        save.classList.add('clicked');
+        save.innerHTML="Saved!"
+        fakemondatalist = localStorage.getItem("saved");
+        fakemondatalist = fakemondatalist ? JSON.parse(fakemondatalist) : [];
+        fakemondatalist.push(JSON.stringify(fakemondata));
+        console.log(fakemondatalist);
+        localStorage.setItem("saved",JSON.stringify(fakemondatalist));
+    }
 })

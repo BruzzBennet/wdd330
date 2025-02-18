@@ -79,6 +79,11 @@ function pinned(){
     }
 }
 
+let animaldata={};
+let colordata=[];
+let fakemondata={"animal":{},"colors":[],"type":"","evo":""};
+let fakemondatalist=[];
+
 async function createTeam(){
     loadnum=0;
     // document.querySelector(".group").innerHTML=``;
@@ -113,9 +118,37 @@ async function createTeam(){
         let pin=document.createElement("button");
         pin.setAttribute("id",`pin${pinlimit+1+i}`);
         pin.setAttribute("class",`pin`);
-        pin.innerHTML=`<img src="images/pin.png" width="35px">`
+        pin.innerHTML=`<img src="images/pin.png" width="35px">`;
         pin.addEventListener("click",()=>{
             pinner(pin,pinlimit+i+1);
+        })
+        let save=document.createElement("button");
+        save.setAttribute("class","bookmark");
+        save.innerHTML=`<img src="images/bookmark.png" width="35px">`;
+        let imageSrc=animallist[0];
+        let commonName=animallist[1];
+        let wikiLink=animallist[2];
+        let color1=colorlist[0];
+        let color2=colorlist[1];
+        let color3=colorlist[2];
+        let typing=type;
+        let evolution=evo;
+        save.addEventListener("click",()=>{
+            saved(save);
+            animaldata={"imageSrc":imageSrc,"commonName":commonName,"wikiLink":wikiLink};
+            fakemondata.animal=animaldata;
+            colordata[0]=color1;
+            colordata[1]=color2;
+            colordata[2]=color3;
+            fakemondata.colors=colordata;
+            fakemondata.type=typing;
+            fakemondata.evo=evolution;
+            fakemondatalist = localStorage.getItem("saved");
+            fakemondatalist = fakemondatalist ? JSON.parse(fakemondatalist) : [];
+            fakemondatalist.push(JSON.stringify(fakemondata));
+            console.log(fakemondatalist);
+            localStorage.setItem("saved",JSON.stringify(fakemondatalist));
+            save.disabled=true;
         })
         // console.log(pokemon);
         card.innerHTML=`  
@@ -140,6 +173,7 @@ async function createTeam(){
             </div>
             `;
         card.appendChild(pin);
+        card.appendChild(save);
         document.querySelector(".group").appendChild(card);
     }
     document.querySelector(".loading").innerHTML=``;
@@ -151,6 +185,10 @@ function pinner(pinner,find){
         pinner.classList.toggle('clicked');
             if (pinlimit<find)
                 pinlimit=find;         
+}
+
+function saved(button){
+    button.classList.add("clicked");
 }
 
 const button = document.querySelector(".create");
