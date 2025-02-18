@@ -1,27 +1,30 @@
 @media only screen and (max-width: 750px){
-    .typeevo{
+    .results,.typeevo{
         grid-template-columns: 1fr 1fr;
-    }
-    .results{
-        grid-template-columns: 1fr;
-    }
-    .animal,.colors{
-        grid-column: 1/2;
-        min-height:300px;
-    }
-
-    .animal img,.colors img{
-        max-height:150px;
-    }
-    .results h1{
-        margin:0;
-        margin-bottom: 1rem;
     }
     .typeevo{
         grid-column: 1/3;
+        grid-template-rows: 1fr;
+    }
+    .results h1, .results h2{
+        margin:0.5rem;
+    }
+    .colors,.animal{
+        min-height: 380px;
+    }
+    .animal img{
+        max-height: 175px;
+        margin: 0;
     }
     .res{
         margin:0.5rem;
+    }
+    .typeevo h1{
+        margin-top: 35px;
+    }
+    .typeevo>div{
+        max-height:125px;
+        min-height: 125px;
     }
     #menu{
         display: block;
