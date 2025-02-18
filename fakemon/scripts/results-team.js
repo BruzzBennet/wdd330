@@ -175,6 +175,7 @@ async function createTeam(){
         card.appendChild(pin);
         card.appendChild(save);
         document.querySelector(".group").appendChild(card);
+        document.querySelector("footer").style.position="relative";
     }
     document.querySelector(".loading").innerHTML=``;
     document.querySelector(".create").style.visibility="visible";

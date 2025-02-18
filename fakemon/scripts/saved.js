@@ -80,3 +80,4 @@ function Sure(item){
 }
 
 displaySaved(data);
+document.querySelector("footer").style.position="relative";

@@ -1,6 +1,21 @@
 @media only screen and (max-width: 750px){
-    .results,.typeevo{
+    .typeevo{
         grid-template-columns: 1fr 1fr;
+    }
+    .results{
+        grid-template-columns: 1fr;
+    }
+    .animal,.colors{
+        grid-column: 1/2;
+        min-height:300px;
+    }
+
+    .animal img,.colors img{
+        max-height:150px;
+    }
+    .results h1{
+        margin:0;
+        margin-bottom: 1rem;
     }
     .typeevo{
         grid-column: 1/3;

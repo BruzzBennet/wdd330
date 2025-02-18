@@ -115,6 +115,7 @@ function pinned(pin,place,url,type,color=false){
 const save= document.querySelector(".save");
 const button = document.querySelector(".create");
 button.addEventListener("click",()=>{
+    document.querySelector("footer").style.position="relative";
     document.querySelector(".save").style.display="inline";
     save.classList.remove('clicked');
     save.innerHTML="Save"

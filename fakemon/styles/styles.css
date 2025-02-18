@@ -277,3 +277,13 @@ dialog button:not(#closeModal){
 dialog button:not(#closeModal):hover,.del:hover{
     background-color:#2f2f2f; 
 }
+
+footer{
+    background-color: #ef5350;
+    color: white;
+    padding: 0.75rem 0;
+    margin-top:2rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
