@@ -50,7 +50,7 @@ function deletefakemon(item){
     // console.log(data);
     localStorage.setItem("saved",JSON.stringify(data));
     displaySaved(data);
-
+    dynamicFooter();
 }
 
 const courseDetails = document.getElementById('sure');
@@ -80,4 +80,17 @@ function Sure(item){
 }
 
 displaySaved(data);
-document.querySelector("footer").style.position="relative";
+
+function dynamicFooter(){
+    if (!data.length == 0) {
+        document.querySelector("footer").style.position="relative";
+    }
+    else{
+        document.querySelector("footer").style.position="absolute";
+    }
+    if (data.length == 1) {
+        document.querySelector("footer").style.position="absolute";
+    }
+}
+
+dynamicFooter();
