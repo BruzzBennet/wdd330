@@ -244,3 +244,36 @@ ul li:hover, .res1 a:hover, .team a:hover{
     font-size: 2rem;
     font-weight: 700;
 }
+
+dialog[open]{
+    background-color: white;
+    border-radius: 1rem;
+    border: 1px solid black;
+    box-shadow: 0 0 5rem black;
+    width: 90%;
+    max-width: 750px;
+    text-align: left;
+    text-align: center;
+}
+
+#closeModal{
+    position:absolute;
+    top:1rem;
+    right:1rem;
+    padding:0.5rem 1rem;
+}
+
+dialog button:not(#closeModal){
+    background-color: #ef5350;
+    color:white;
+    border:none;
+    width:25%;
+    margin:1rem;
+    padding:0.5rem;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+}
+
+dialog button:not(#closeModal):hover,.del:hover{
+    background-color:#2f2f2f; 
+}

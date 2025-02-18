@@ -5,11 +5,11 @@ function displaySaved(data){
     document.querySelector(".savedfakemon").innerHTML="";
     data.forEach((item) => {
         let del=document.createElement("button");
-        del.setAttribute("class","pin");
+        del.setAttribute("class","pin del");
         del.innerHTML=`<img src="images/trash.png" width="35px">`;
         del.addEventListener("click",()=>{
             let finditem=JSON.stringify(item);
-            deletefakemon(finditem);
+            Sure(finditem);
         });
         item=JSON.parse(item);
         // console.log(item.animal);
@@ -51,6 +51,32 @@ function deletefakemon(item){
     localStorage.setItem("saved",JSON.stringify(data));
     displaySaved(data);
 
+}
+
+const courseDetails = document.getElementById('sure');
+
+function Sure(item){
+    courseDetails.innerHTML=``;
+    courseDetails.innerHTML=`
+    <button id="closeModal">X</button>
+    <h2>Do you want to delete this Fakemon Idea?</h2>
+    <button id="sureyes">Yes</button>
+    <button id="sureno">No</button>
+        `;
+    courseDetails.showModal();
+    closeModal.addEventListener('click',()=>{
+        courseDetails.close();
+    });
+    
+    document.getElementById("sureyes").addEventListener('click',()=>{
+        deletefakemon(item);
+        courseDetails.close();
+    });
+    
+    document.getElementById("sureno").addEventListener('click',()=>{
+        courseDetails.close();
+    });
+    
 }
 
 displaySaved(data);
