@@ -15,6 +15,11 @@
     .colors,.animal{
         min-height: 340px;
     }
+    .animal h1, .colors h1{
+        margin: 0;
+        margin-bottom: 1rem;
+        text-align: left;
+    }
     .animal img{
         max-height: 135px;
         margin: 0;
